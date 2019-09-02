@@ -79,3 +79,15 @@
 		)
 	)
 )
+
+(define(oddElements lst)
+  (cond
+    ((empty? lst) '())
+    ((even? (length lst)) (oddElements (cdr lst)))
+    ((odd? (length lst)) (cons (car lst) (oddElements (cdr lst)))))
+  )
+ 
+;(oddElements '(1 2 3 4 5))
+;(oddElements '(1 2 3 4))
+;(oddElements '())
+;(oddElements '(1))

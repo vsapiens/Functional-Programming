@@ -1,0 +1,15 @@
+(define (row-sum rowA rowB)
+  (if (null? rowA)
+    '()
+    (cons (+ (car rowA) (car rowB)) (row-sum (cdr rowA) (cdr rowB)))
+  )
+)
+    
+(define (matrix-sum matrixA matrixB)
+
+  (if (null? matrixA)
+    '()
+    (cons(row-sum (car matrixA) (car matrixB)) 
+    (matrix-sum (cdrmatrixA) (cdr matrixB)))
+  )
+)

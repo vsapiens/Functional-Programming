@@ -1,3 +1,6 @@
+;Luis Felipe Alvarez Sánchez a01194173
+;Erick Francisco González Martínez a01039859
+;José Napoleón Lazo Celaya a01176472
 #lang racket
 
 (define (evenlist x)
@@ -16,7 +19,6 @@
 
     (list-ref x 2)
     '()
-
   )
 )
 

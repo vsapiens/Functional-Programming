@@ -19,13 +19,26 @@
 
 ;(prime? 4)
 
-
 ;Function 2
-;(define (countDigits lst)
-;)
+(define (countDigitsAux x)
+  (if (< x 10)
+    1
+    (+ 1 (countDigitsAux (quotient x 10)))
+  )
+)
+
+(define (countDigits l)
+  (if (null? l)
+    0
+    (+ (countDigitsAux (car l)) (countDigits (cdr l)))
+  )
+)
+
+(countDigits '())
+(countDigits '(1 2 3 4 100))
+(countDigits '(111 22 3))
 
 ;Function 3
-
 (define (appendLists x y)
 	(if (list? x)
 		(if (list? y)
@@ -63,9 +76,8 @@
 ;(listToNum '(1 2 3 4 5))
 
 ;Function 6
-(define (complete lst)
-
-
+(define (complete? lst)
+  (map sort lst)
 ) 
 
 

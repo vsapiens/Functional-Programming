@@ -13,7 +13,7 @@
 ;A01039859
 (define (myReverse x)
 	(cond
-	((empty? x) '())
+		((empty? x) '())
 	((> (length x) 0) (cons (car x) (myReverse (cdr x))))
 	)
 )

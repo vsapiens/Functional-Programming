@@ -63,15 +63,9 @@
 
 ;Function 4
 (define (or lst1 lst2)
- (if ((null? lst1) 1 (null? lst2))
-      null
-      (if (and (list? (cdr lst1)) (list? (cdr lst2)))
-        (or (cdr lst1) (cdr lst2))
-        (+ (+ (car lst1) (car lst2) (or (cdr lst1) (cdr lst2))))
-      )
-  )
+  (map bitwise-ior lst1 lst2)
 )
-(or '(1 0 0) '(0 1 1))
+;(or '(0 0 0) '(0 1 1))
 
 ;Function 5
 (define (listToNum lst)

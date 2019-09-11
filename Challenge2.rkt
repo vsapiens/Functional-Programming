@@ -1,7 +1,7 @@
 #lang racket
 
-;Erick González
-;A01039859
+;Erick González A01039859
+;Moisés Fernández A01197049
 
 
 ;;P1 Prime numbers
@@ -34,9 +34,9 @@
   )
 )
 
-(countDigits '())
-(countDigits '(1 2 3 4 100))
-(countDigits '(111 22 3))
+;(countDigits '())
+;(countDigits '(1 2 3 4 100))
+;(countDigits '(111 22 3))
 
 ;Function 3
 (define (appendLists x y)
@@ -51,6 +51,7 @@
 		)
 	)
 )
+
 (define (merge lst1 lst2)
   (sort (appendLists lst1 lst2) <)
 )
@@ -76,10 +77,23 @@
 ;(listToNum '(1 2 3 4 5))
 
 ;Function 6
-(define (complete? lst)
-  (map sort lst)
-) 
+(define (removeNestedLists x)
+	(if (null? x)
+		null
+		(if (list? (car x))
+		(append (removeNestedLists (car x)) (removeNestedLists (cdr x)))
+		(cons (car x) (removeNestedLists (cdr x)))
+		)
+	)
+)
 
+(define (complete? lst)
+  (>= (- (length (removeNestedLists lst)) (length lst)) ( / (* (length lst) (- (length lst) 1)) 2))
+)
+
+;(complete? '((a b c) (b a c) (c a b) (d e) (e d))) 
+;(complete? '((a b) (b a)))
+;(complete? '( (a c) (b) (c a)))
 
 ;Function 7
 (define (sumMat x) 

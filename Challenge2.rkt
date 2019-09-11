@@ -3,37 +3,21 @@
 ;Erick González
 ;A01039859
 
+
+;;P1 Prime numbers
 (define (primeAux x n)
-
-(cond
-  ((>= n x) #t)
-  (((= (remainder x n)) 0) #f)
-  (else (primeAux x (+ n 1)))
+  (cond
+    ((>= n x) #t)
+    ((= (remainder x n) 0) #f)
+    (else (primeAux x (+ n 1)))
+  )
 )
-)
-(define (prime x)
-(primeAux x 2)
-)
-;(define (countAux n)
-;  (cond
-;  (>= )
-;  )
-;)
-;(define (count lst)
-;  (if(null? lst)
-;    (+ (countAux (car x)))
-;    (count (cdr lst))
-;  )
-;)
 
-;(define (count lst)
-  ;(apply (number->string) lst)
- ; (if (null? x)
-  ;(string-length( append (number->string (car lst)) (count(cdr lst))))
- ; null
- ; )
-;)
+(define (prime? x)
+  (primeAux x 2)
+)
 
+;(prime? 4)
 
 
 ;Function 2
@@ -54,7 +38,6 @@
 		)
 	)
 )
-
 (define (merge lst1 lst2)
   (sort (appendLists lst1 lst2) <)
 )
@@ -80,7 +63,11 @@
 ;(listToNum '(1 2 3 4 5))
 
 ;Function 6
-;(define (complete lst)) 
+(define (complete lst)
+
+
+) 
+
 
 ;Function 7
 (define (sumMat x) 

@@ -54,13 +54,27 @@
 
 ;Check Balance
 
-(define (checkBalance lst)
+(define (checkIn lst)
   (if (null? lst)
     0
     (if (string=? (caar lst) "in")
-      (+ (car( reverse (car lst))) (checkBalance (cdr lst)))
-      (checkBalance (cdr lst))
+      (+ (car( reverse (car lst))) (checkIn (cdr lst)))
+      (checkIn (cdr lst))
     )
   )
 )
-(checkBalance '(("in" "Salary" 4000) ("in" "Parents" 2000) ("out" "Rent" 3500) ("out" "food" 750) ("out" "hobbies" 400) ("in" "Scholarship" 2500)))
+
+(define (checkOut lst)
+  (if (null? lst)
+    0
+    (if (string=? (caar lst) "out")
+      (+ (car( reverse (car lst))) (checkOut (cdr lst)))
+      (checkOut (cdr lst))
+    )
+  )
+)
+(define (checkBalance lst)
+  (- (checkIn lst) (checkOut lst))
+)
+
+;(checkBalance '(("in" "Salary" 4000) ("in" "Parents" 2000) ("out" "Rent" 3500) ("out" "food" 750) ("out" "hobbies" 400) ("in" "Scholarship" 2500)))

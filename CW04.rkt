@@ -30,8 +30,9 @@
 ;(sumHigh'(1 2 3 5 6 7 8))
 
 ;Graphs
-;(define (edgeList? lst)
-;)
+(define (edgeList? graph lst)
+
+)
 
 
 ;Matrix Sum

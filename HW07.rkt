@@ -30,7 +30,6 @@
 	(display "Not yet implemented.")
 )
 
-
 (define (set x)
 	(if (null? x)
 		null

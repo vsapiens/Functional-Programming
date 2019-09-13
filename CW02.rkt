@@ -40,7 +40,6 @@
 ;(palindrome "HOOH")
 
 (define (get lst index)
-
   (if (not (null? lst))
     (if (and (>= index 0) (< index (length lst)))
         (if (equal? index 0)
@@ -87,7 +86,7 @@
     ((empty? lst) '())
     ((even? (length lst)) (oddElements (cdr lst)))
     ((odd? (length lst)) (cons (car lst) (oddElements (cdr lst)))))
-  )
+)
  
 ;(oddElements '(1 2 3 4 5))
 ;(oddElements '(1 2 3 4))

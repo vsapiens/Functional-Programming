@@ -70,6 +70,22 @@
   	(display "Not yet implemented.")
 )
 
-(define (det3x3 m)
-	(display "Not yet implemented.") 
+(define (getElement matrix x y)
+  (list-ref (list-ref matrix x) y)
 )
+
+(define (det3x3 matrix)  
+    (-
+      (+ 
+        (* (getElement matrix 0 0) (getElement matrix 1 1) (getElement matrix 2 2))
+        (* (getElement matrix 0 1) (getElement matrix 1 2) (getElement matrix 2 0))
+        (* (getElement matrix 0 2) (getElement matrix 1 0) (getElement matrix 2 1))
+      )
+      (+
+				(* (getElement matrix 2 0) (getElement matrix 1 1) (getElement matrix 0 2))
+				(* (getElement matrix 2 1) (getElement matrix 1 2) (getElement matrix 0 0))
+				(* (getElement matrix 2 2) (getElement matrix 1 0) (getElement matrix 0 1))
+      )
+    )
+)
+(det3x3 '((2 1 3) (4 1 2) (3 9 3)))

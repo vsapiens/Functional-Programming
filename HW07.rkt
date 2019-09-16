@@ -39,7 +39,7 @@
 		( (null? lst) #t) 
 		( (not (list? lst)) #t) 
 		( (exist? (car lst) (cdr lst)) #f)
-		(else (allDifferent? (cdr lst)))
+		( else (allDifferent? (cdr lst)))
 	)
 )
 
@@ -47,7 +47,17 @@
 ;(allDifferent? '(0 7 2 8 4 5 0))
 ;(allDifferent? '(0 7 2 8 4 5 7))
 
-(define (set x)
+(define (set lst)
+		(cond
+		( (null? lst) null)
+		( (exist? (car lst) (cdr lst)) (set (cdr lst)))
+		( (not (number? (car lst))) (set (cdr lst))) 
+		( (number? (car lst)) (append (set (car lst)) (set (cdr lst))))
+		( else (cons (car lst) (set (cdr lst))))
+		)
+)
+(set '(1 a '(3 5) 2 3))
+
 	(if (null? x)
 		null
 		(if (list? (car x))
@@ -88,4 +98,4 @@
       )
     )
 )
-(det3x3 '((2 1 3) (4 1 2) (3 9 3)))
+;(det3x3 '((2 1 3) (4 1 2) (3 9 3)))

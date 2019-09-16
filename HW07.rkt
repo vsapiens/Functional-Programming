@@ -47,34 +47,26 @@
 ;(allDifferent? '(0 7 2 8 4 5 0))
 ;(allDifferent? '(0 7 2 8 4 5 7))
 
-(define (set lst)
-		(cond
-		( (null? lst) null)
-		( (exist? (car lst) (cdr lst)) (set (cdr lst)))
-		( (not (number? (car lst))) (set (cdr lst))) 
-		( (number? (car lst)) (append (set (car lst)) (set (cdr lst))))
-		( else (cons (car lst) (set (cdr lst))))
-		)
-)
-(set '(1 a '(3 5) 2 3))
-
+(define (set x)
 	(if (null? x)
 		null
-		(if (list? (car x))
-			(if (number? (car x))
-				(append (set (car x)) (set (cdr x)))
-				(set (cdr x))	
+		(let(
+				(lst (filter number? x)))
+			(if (member (car lst) (cdr lst))
+					(set (cdr lst))
+					(cons (car lst) (set (cdr lst)))
 			)
-			(cons (car x) (set (cdr x)))
 		)
 	)
 )
-
+;(set '(1 a '(3 5) 2 3))
 ;(set '(1 a 1 2 3 (1 2 3) 3))
 
 (define (union x y)
-	(display "Not yet implemented.")
+	(set (append x y))
 )
+
+(union '(1 a '(3 5) 2 3) '(1 a 1 2 3 (1 2 3) 3 4 5))
 
 (define (intersect x y)
   	(display "Not yet implemented.")

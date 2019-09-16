@@ -15,20 +15,37 @@
 )
 ;(exist? 1 '(0 2 3 4 1))
 
-(define (index x lst)
+(define (indexCounter x lst iCounter)
   (if (null? lst)
 		-1
 		(if (= x (car lst))
-			(index x (cdr lst))
-			(- (length lst) 1)
+			iCounter
+			(indexCounter x (cdr lst) (+ iCounter 1))
 		)
 	)
 )
-;(index 1 '(0 7 2 3 4 5 1))
+
+(define (index x lst)
+	(indexCounter x lst 0)
+)
+
+;(index 0 '(0 7 2 8 4 5 1))
+;(index 7 '(0 7 2 8 4 5 1))
+;(index 2 '(0 7 2 8 4 5 1))
+;(index 8 '(0 7 2 8 4 5 1))
 
 (define (allDifferent? lst)
-	(display "Not yet implemented.")
+	(cond
+		( (null? lst) #t) 
+		( (not (list? lst)) #t) 
+		( (exist? (car lst) (cdr lst)) #f)
+		(else (allDifferent? (cdr lst)))
+	)
 )
+
+;(allDifferent? '(0 7 2 8 4 5 1))
+;(allDifferent? '(0 7 2 8 4 5 0))
+;(allDifferent? '(0 7 2 8 4 5 7))
 
 (define (set x)
 	(if (null? x)
@@ -42,7 +59,9 @@
 		)
 	)
 )
-(set '(1 a 1 2 3 (1 2 3) 3))
+
+;(set '(1 a 1 2 3 (1 2 3) 3))
+
 (define (union x y)
 	(display "Not yet implemented.")
 )

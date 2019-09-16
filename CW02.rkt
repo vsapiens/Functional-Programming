@@ -5,7 +5,7 @@
 
 (define (evenlist x)
 
-  ( if (even? (length x))
+  (if (even? (length x))
 
     (car x)
 

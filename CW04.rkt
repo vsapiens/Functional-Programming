@@ -30,11 +30,11 @@
 ;(sumHigh'(1 2 3 5 6 7 8))
 
 ;Graphs
-(define (edgeList? graph lst)
-
+(define (edgeList? graph nodes)
+  (not (empty? (filter (lambda (x) (= nodes x)) graph)))
 )
 
-
+;(edgeList? '((a b c) (b a) (b c)) '(a b))
 ;Matrix Sum
 (define (row-sum rowA rowB)
   (if (null? rowA)
@@ -51,7 +51,7 @@
   )
 )
 
-;(matrix-sum '((1 2 3) (4 5 6) (7 8 9)) '((1 2 3) (4 5 6) (7 8 9)))
+(matrix-sum '((1 2 3) (4 5 6) (7 8 9)) '((1 2 3) (4 5 6) (7 8 9)))
 
 ;Check Balance
 

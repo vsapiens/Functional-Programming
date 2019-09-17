@@ -24,7 +24,7 @@
   (let 
     (
       (m (filter (lambda (x) (string=? (car x) "male")) lst))
-      (f (filter (lambda (x) (string=? (car x) "female")) lst)))  
+      (f (filter (lambda (x) (string=? (car x) "female")) lst) ))  
       (append (list "Male" (/ (apply + (map cadr m)) (length m))) (list "Female" (/ (apply + (map cadr f)) (length f))))
   )
 )

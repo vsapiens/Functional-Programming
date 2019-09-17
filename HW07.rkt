@@ -66,11 +66,23 @@
 	(set (append x y))
 )
 
-(union '(1 a '(3 5) 2 3) '(1 a 1 2 3 (1 2 3) 3 4 5))
+;(union '(1 a '(3 5) 2 3) '(1 a 1 2 3 (1 2 3) 3 4 5))
 
 (define (intersect x y)
-  	(display "Not yet implemented.")
+	(if (null? x)
+		null
+		(let(
+				(lst1 (set x))
+				(lst2 (set y)))
+			(if (member (car lst2) lst1)
+					(cons (car lst2) (intersect (cdr lst2) lst1))
+					(intersect (cdr lst2) lst1)
+			)
+		)
+	)
 )
+
+;(intersect '(1 a '(3 5) 2 3 3 3 4) '(1 a 1 2 (1 2 3)))
 
 (define (getElement matrix x y)
   (list-ref (list-ref matrix x) y)

@@ -14,7 +14,7 @@
 (define (matrMul mat1 mat2)
   (map
    (lambda (mult-row) 
-    (apply map (lambda (mult-column) (apply + (map * mult-row mult-column)) mat2) ) mat1)
+    (apply map (lambda (mult-column) (apply + (map * mult-row mult-column)) mat2)) mat1)
   )
 )
 

@@ -42,12 +42,16 @@ toBinaryString x
     | x == 1 = "1"
     | mod x 2 == 0 = toBinaryString (div x 2) ++ "1"
     | not(mod x 2 == 0) =   toBinaryString (div x 2) ++ "0"
-        
+
+--Insertion sort Aux
+insertionSortAux:: Int -> [Int] -> [Int]
+insertionSortAux y [] = [y]
+insertionSortAux y (x:xs)
+    | x > y   =  y:x:xs
+    | otherwise =  x : insertionSortAux y xs
 
 -- Insertion sort
 insertionSort :: [Int] -> [Int]
 insertionSort [] = []
-insertionSort (x:y:rest)
-    | x < y = x : insertionSort (y:rest)
-    | x == y = x:y :insertionSort rest
-    | x > y = y:x :insertionSort rest
+insertionSort [x] = [x]
+insertionSort (x:xs) = insertionSortAux x (insertionSort xs)

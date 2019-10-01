@@ -1,4 +1,5 @@
 module HW08 where
+--Erick Francisco González Martínez A01039859
 
 -- Complete the following functions and submit your file to Canvas.
 
@@ -16,19 +17,37 @@ invert (x: rest) = invert rest ++ [x]
 
 -- Evaluation of polynomials
 evaluate :: [Double] -> Double -> Double
-evaluate _ _ = error "Not yet implemented."
+evaluate [] _ = 0
+evaluate (x:rest) n = 
+    x*(n^(length rest)) + evaluate rest n
 
 -- Cleans a string. Given a string, return recursively a "cleaned" string where adjacent chars that are the same have been reduced to a single char. So "yyzzza" yields "yza".
 cleanString :: [Char] -> [Char]
-
+cleanString [] = [] 
+cleanString [x] = [x]
+cleanString (x:rest) = if elem x rest
+                then cleanString rest
+                else [x] ++ cleanString rest
 -- Multiples
 multiples :: [Int] -> Int -> [Int]
-multiples _ _ = error "Not yet implemented."
+multiples [] _ = []
+multiples (x:rest) n = if x `mod` n == 0
+                        then x : multiples rest n
+                        else multiples rest n
 
 -- Returns a string with the binary representation of an integer value
 toBinaryString :: Int -> [Char]
-toBinaryString _ = error "Not yet implemented."
+toBinaryString x
+    | x == 0 = "0"
+    | x == 1 = "1"
+    | mod x 2 == 0 = toBinaryString (div x 2) ++ "1"
+    | not(mod x 2 == 0) =   toBinaryString (div x 2) ++ "0"
+        
 
 -- Insertion sort
 insertionSort :: [Int] -> [Int]
-insertionSort _ = error "Not yet implemented."
+insertionSort [] = []
+insertionSort (x:y:rest)
+    | x < y = x : insertionSort (y:rest)
+    | x == y = x:y :insertionSort rest
+    | x > y = y:x :insertionSort rest

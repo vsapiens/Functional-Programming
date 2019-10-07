@@ -21,7 +21,7 @@ data Set = Set [Int] deriving (Show)
 
 addSetAux:: [Int] -> Int -> [Int]
 addSetAux s n
-    | s == [] = []
+    | s == [] = [n]
     | elem n s = s 
     | otherwise =  s ++ [n] 
 

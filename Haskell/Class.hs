@@ -1,4 +1,8 @@
 module Class1 where
-    factorial :: Integer-> Integer
-    factorial 0 = 1
-    factorial n = n * factorial(n-1)
+
+
+data Coord  = Empty | Float Float deriving (Show, Eq)
+
+enigma5::Coord ->Int ->Coord
+enigma5 Empty _ = Empty
+enigma5 (Coord x y) n = Coord ()

@@ -1,4 +1,6 @@
 module Challenge where
+import Data.List
+import Data.Ord
 
 data Mat = Mat [[Int]] deriving (Show)
 
@@ -10,12 +12,6 @@ transMatAux m
 
 transMat :: Mat -> Mat
 transMat (Mat x) = Mat (transMatAux x)
-
-modeAux ::[Int] -> [Int]
-modeAux [] = []
-
-mode :: [Int] -> [Int]
-mode xs = modeAux xs
 
 data Set = Set [Int] deriving (Show)
 
@@ -67,3 +63,6 @@ mergeSort :: [Int] -> [Int]
 mergeSort [] = []
 mergeSort [x] = [x]
 mergeSort m = mergeSortAux (mergeSort (take (length m `div` 2) m )) (mergeSort (drop (length m `div` 2) m))
+
+mode :: [Int] -> Int
+mode xs = head (maximumBy (comparing length) (group (mergeSort xs)))

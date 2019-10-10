@@ -5,11 +5,18 @@ import Data.Ord
 
 -- Matrices
 
-dotProduct :: [Int] -> [Int] -> Int
-dotProduct v w = sum (map (\(x, y) -> x * y) (zip v w))
+data Mat = Mat [[Int]] deriving (Show)
 
-matMultiplicationAux :: [[Int]] -> [[Int]] -> [[Int]]
-matMultiplicationAux x y = [dotProduct (head x) (head y)]:[]
+transMatAux :: [[Int]] -> [[Int]]
+transMatAux m
+    | length (head m) == 0 = []
+    | otherwise = (map head m):(transMatAux (map tail m))
+    --  | ([]:_) = []
+
+matMultiplication :: [[Int]] -> [[Int]] -> [[Int]]
+matMultiplication [] _ = []
+matMultiplication _ [] = []
+matMultiplication x y = [[ sum $ zipWith (*) m1 tm2 | tm2 <- (transMatAux y) ] | m1 <- x ]
 
 -- Table summarization
 averageHeight::[([Char],Int)]->[([Char],Int)]

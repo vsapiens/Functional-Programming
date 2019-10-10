@@ -36,4 +36,23 @@ largestDegreeAux g = mode (map (\(x,y) -> x) g)
 largestDegree :: Graph -> Int
 largestDegree (Graph x) = largestDegreeAux x
 
+findPaths :: Int-> Int->  [(Int,Int)] -> [[Int]]
+findPaths  source sink edges 
+    | source == sink = [[sink]]
+    | otherwise = [
+    source:path 
+        | edge<-edges, (fst edge) == source,
+        path<-(findPaths (snd edge) sink [e | e<-edges, e/=edge] )];
 
+findPathAux :: [[Int]]->Bool
+findPathAux [] = False
+findPathAux ([]:_) = False
+findPathAux m
+    | length (head m) == 0 = False
+    | otherwise = True
+
+findPath :: Int -> Int -> Graph -> Bool
+findPath m n (Graph x) = findPathAux $ findPaths m n x
+
+--let g1 = Graph [(1,2),(1,3),(2,3),(2,1),(2,4),(4,5)]
+--let g2 = Graph [(1,2),(1,3),(2,3),(2,1),(2,4),(4,5),(4,6)]

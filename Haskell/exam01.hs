@@ -7,7 +7,6 @@ sumTree E = 0
 sumTree (Tree n x y) = n + sumTree x + sumTree y
 --(Tree 8 (Tree 5 (Tree 2 E E) (Tree 7 E E)) (Tree 9 E E))
 
-
 --[("Male", 178), ("Female", 165), ("Female", 158), ("Female", 182)]
 
 insert:: ([Char],Int) -> [([Char],Int)] -> [([Char],Int)]

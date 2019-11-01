@@ -41,7 +41,7 @@ toBinaryString x
     | x == 0 = "0"
     | x == 1 = "1"
     | mod x 2 == 0 = toBinaryString (div x 2) ++ "1"
-    | not(mod x 2 == 0) =   toBinaryString (div x 2) ++ "0"
+    | not(mod x 2 == 0) = toBinaryString (div x 2) ++ "0"
 
 --Insertion sort Aux
 insertionSortAux:: Int -> [Int] -> [Int]

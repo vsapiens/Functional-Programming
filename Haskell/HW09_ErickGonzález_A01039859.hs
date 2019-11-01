@@ -4,7 +4,6 @@ import Data.Ord
 --Erick Francisco González Martínez A01039859
 
 -- Matrices
-
 data Mat = Mat [[Int]] deriving (Show)
 
 transMatAux :: [[Int]] -> [[Int]]
@@ -46,10 +45,7 @@ largestDegree (Graph x) = largestDegreeAux x
 findPaths :: Int-> Int->  [(Int,Int)] -> [[Int]]
 findPaths  source sink edges 
     | source == sink = [[sink]]
-    | otherwise = [
-    source:path 
-        | edge<-edges, (fst edge) == source,
-        path<-(findPaths (snd edge) sink [e | e<-edges, e/=edge] )];
+    | otherwise = [source:path | edge<-edges, (fst edge) == source, path<-(findPaths (snd edge) sink [e | e<-edges, e/=edge])];
 
 findPathAux :: [[Int]]->Bool
 findPathAux [] = False

@@ -11,7 +11,7 @@ respond() ->
 	  io:format("~p~n", [X + 1]), respond();
       _ -> io:format("Bye \n")
     end.
-
+  
 sum() -> receive {Pid, Y, Z} -> Pid ! Y + Z end.
 
 multiply() -> receive {Pid, X, W} -> Pid ! X * W end.

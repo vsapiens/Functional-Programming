@@ -1,0 +1,7 @@
+c(hw12).
+hw12:startFoF(x, blue).
+hw12:startFoF(y, red).
+hw12:startFoF(z, blue).
+x ! {y, "How  are  you ?"}.
+x ! {z, "How  are  you ?"}.
+z ! {x, "Fine. Thank you"}.

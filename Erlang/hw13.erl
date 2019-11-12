@@ -16,8 +16,10 @@
 push(X, []) -> [X];
 push(X, Y) -> [X] ++ Y.
 
+pop([]) -> [];
 pop([_ | XS]) -> XS.
 
+peek([]) -> [];
 peek([X | _]) -> X.
 
 % Matrix addition

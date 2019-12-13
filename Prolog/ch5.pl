@@ -35,4 +35,21 @@ younger(Julio,Gloria,Pablo,Miguel,Silvia):-
     all_different([Julio,Gloria,Pablo,Miguel,Silvia]).
     
 
-    
+farthest(Mova,Taci,Dape,Liru):-
+    L = [1,2,3,4],
+    member(Mova,L),
+    member(Taci,L),
+    member(Dape,L),
+    member(Liru,L),
+    Mova>Taci,
+    Dape < Liru,
+    Liru < Taci,
+    all_different([Mova,Taci,Dape, Liru]).
+
+ flower(Solution):-
+    length(Solution,3),
+    member([brook,_],Solution),
+    member([virgina,vanity],Solution),
+    member([tricia, goldbush],Solution),
+    Solution = [_,_,[brook,quiteness]],
+    Solution = [_,[tricia,_],_], !.
